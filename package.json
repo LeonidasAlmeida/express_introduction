@@ -4,14 +4,15 @@
   "main": "index.js",
   "scripts": {
     "start": "server.js",
-    "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "babel": "^5.8.38",
+    "consign": "^0.1.6",
     "cors": "^2.8.5",
     "express": "^5.2.1",
     "nodemon": "^3.1.11"

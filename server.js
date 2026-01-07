@@ -1,8 +1,17 @@
-const path = require('path');
-const fs = require('fs');
+const express = require('express')
+const PORT = 3000
+const consign = require('consign')
+const routes = require('./routes/routes_index')
+const app = express()
 
-fs.readFile(path.join(__dirname,'files','starter.txt'),'utf-8',(err,data)=>{
-    if(err) throw err;
-    console.log(data)
-})
-console.log(path.join(__dirname,'files','starter.txt'))
+//middleware
+//for formate the output of json 
+//routes
+consign()
+.include('middlewares')
+.then('models')
+.then('routes')
+.then("libs")
+.into(app)
+
+
