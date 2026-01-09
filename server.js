@@ -1,17 +1,21 @@
-const express = require('express')
-const PORT = 3000
-const consign = require('consign')
-const routes = require('./routes/routes_index')
-const app = express()
+const { format } = require('date-fns')
+const  {v4: uuid } = require('uuid')
 
-//middleware
-//for formate the output of json 
-//routes
-consign()
-.include('middlewares')
-.then('models')
-.then('routes')
-.then("libs")
-.into(app)
+const fs = require('fs')
+const fsPromises = require('fs').promises
+const path = require('path')
 
 
+const logEvents = async (message) =>{
+  const dataTime =`${format(new Date(),'yyyyMMdd\tHH:mm:ss')}`
+  const logItem = `${dataTime}\t${uuid()}\t${message}`
+  console.log(logItem)
+  try{
+    await fsPromises.appendFile(path.join(__dirname,'logs',eventLog.txt))
+  }catch(err){
+    console.log(err)
+  }
+}
+//console.log(format(new Date(),'yyyyMMdd\tHH:mm:ss'))
+
+module.exports = logEvents
